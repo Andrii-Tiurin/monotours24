@@ -1,11 +1,331 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
-  <meta charset="utf-8">
-  <title>Monotours24</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monotours24 – Bald verfügbar</title>
+  <meta name="description" content="Monotours24 – Reisebüro. Unsere Website befindet sich im Aufbau. Kontaktieren Sie uns per Formular oder E‑Mail." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #7ddff3; /* türkis */
+      --bg2: #3bb2e1; /* blau */
+      --sand: #f7e8c3;
+      --palm: #0f5132;
+      --accent: #00e0ff;
+      --shadow: rgba(0,0,0,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:#06202b;
+      overflow-x:hidden;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(255,255,255,.25), transparent 60%), linear-gradient(135deg,var(--bg1),var(--bg2));
+    }
+    /* Animated gradient sky */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-2;
+      background: conic-gradient(from 180deg at 50% 30%, rgba(255,255,255,.25), transparent 30%, rgba(255,255,255,.15) 60%, transparent 90%);
+      filter: blur(20px) saturate(120%);
+      animation: skySpin 30s linear infinite;
+    }
+    @keyframes skySpin{to{transform:rotate(1turn)}}
+
+    /* Floating particles (ocean sparkle) */
+    #particles{position:fixed; inset:0; z-index:-1; pointer-events:none}
+
+    /* Hero */
+    .container{max-width:1200px; margin:0 auto; padding:24px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .logo{
+      display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:16px;
+      background:rgba(255,255,255,.25); backdrop-filter: blur(8px); box-shadow:0 8px 24px var(--shadow);
+      transform-style:preserve-3d;
+    }
+    .logo svg{width:28px; height:28px}
+    .logo b{font-weight:700; letter-spacing:.3px}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center; padding:48px 0}
+    @media (max-width:900px){.hero{grid-template-columns:1fr; text-align:center}}
+
+    .badge{display:inline-grid; place-items:center; padding:6px 12px; border-radius:999px; font-size:12px; letter-spacing:.4px; color:#034152;
+      background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.45)); border:1px solid rgba(255,255,255,.8);
+      box-shadow:0 8px 24px var(--shadow);
+    }
+
+    h1{font-family:"Playfair Display",serif; font-size:clamp(32px,6vw,64px); line-height:1.05; margin:14px 0 10px}
+    .subtitle{font-size:clamp(16px,2.8vw,20px); opacity:.95}
+
+    /* CTA card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:0 20px 60px var(--shadow);
+      border-radius:24px; padding:24px; position:relative; overflow:hidden; transform-style:preserve-3d;
+    }
+    .card::after{content:""; position:absolute; inset:auto -40% -60px -40%; height:160px; background:radial-gradient(120px 50px at 50% 0, rgba(255,255,255,.7), transparent 60%);
+      transform: translateZ(30px); opacity:.7}
+
+    .tilt{transition:transform .2s ease-out}
+
+    .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    .btn{appearance:none; border:0; cursor:pointer; padding:12px 18px; border-radius:14px; font-weight:600; letter-spacing:.2px; 
+      background:#06202b; color:#fff; box-shadow:0 10px 30px rgba(6,32,43,.3)}
+    .btn.ghost{background:transparent; color:#06202b; border:1px solid rgba(6,32,43,.15); backdrop-filter: blur(6px)}
+
+    /* Form */
+    form{display:grid; gap:12px; margin-top:14px}
+    .field{display:grid; gap:6px; text-align:left}
+    label{font-size:12px; opacity:.8}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(6,32,43,.15);
+      background:rgba(255,255,255,.9); outline:none; box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+      font:inherit
+    }
+    textarea{min-height:110px; resize:vertical}
+
+    .notice{font-size:12px; opacity:.7}
+    .success, .error{display:none; margin-top:8px; font-weight:600}
+    .success{color:#0a7d45}
+    .error{color:#a31d1d}
+
+    /* Ocean & beach */
+    .beach{position:fixed; left:0; right:0; bottom:0; height:180px; z-index:0}
+    .sand{position:absolute; left:0; right:0; bottom:0; height:120px; background:radial-gradient(110% 120px at 50% 10%, var(--sand), #f2d9a9 60%, #eacb8b 90%)}
+    .wave{position:absolute; left:-10%; right:-10%; height:140px; bottom:90px}
+    .wave svg{width:120%; height:100%}
+    .wave.one{opacity:.7; animation: swell 12s ease-in-out infinite}
+    .wave.two{opacity:.5; animation: swell 18s ease-in-out infinite reverse}
+    @keyframes swell{50%{transform: translateY(10px)} 100%{transform: translateY(0)}}
+
+    /* Palms */
+    .palms{position:fixed; inset:0; pointer-events:none}
+    .palms svg{position:absolute; bottom:90px; filter: drop-shadow(0 10px 12px var(--shadow)); opacity:.85}
+    .palms .left{left:12px; transform: scale(1)}
+    .palms .right{right:12px; transform: scale(-1,1)}
+
+    /* Plane animation */
+    .plane{position:fixed; top:14%; left:-10%; width:120px; opacity:.95; filter: drop-shadow(0 10px 10px rgba(0,0,0,.15))}
+    .plane path{fill:#fff}
+
+    /* Footer */
+    footer{padding:24px; text-align:center; font-size:12px; opacity:.8}
+
+    /* Glass group */
+    .glass{backdrop-filter: blur(10px); background:rgba(255,255,255,.25); border:1px solid rgba(255,255,255,.6); border-radius:18px}
+  </style>
 </head>
 <body>
-  <h1>Website im Aufbau</h1>
-  <p>Unsere Seite wird bald verfügbar sein.</p>
+  <canvas id="particles"></canvas>
+
+  <!-- Airplane -->
+  <svg class="plane" viewBox="0 0 128 64" aria-hidden="true">
+    <path d="M5 35 l65 0 16 -8 18 0 -17 8 17 8 -18 0 -16 -8 -65 0 -2 -3 2 -5z"/>
+  </svg>
+
+  <div class="container">
+    <header>
+      <div class="logo tilt" data-tilt>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M2 14c7-1 12-3 20-10-5 8-9 13-12 18l-3-5-5-3z" stroke="#06202b" stroke-width="1.5" fill="none"/>
+        </svg>
+        <div>
+          <b>Monotours24</b>
+          <div style="font-size:12px; opacity:.75">Ihr Reisebüro</div>
+        </div>
+      </div>
+      <a class="btn ghost" href="mailto:Monotours24@gmail.com">Kontakt: Monotours24@gmail.com</a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="badge">🌴 Malediven‑Vibes • Türkises Meer • Palmen</span>
+        <h1>Unsere Website befindet sich gerade im Aufbau<span style="display:block; font-size:.55em; font-weight:400">Wir starten bald</span></h1>
+        <p class="subtitle">Freuen Sie sich auf exklusive Reisen, persönliche Beratung und traumhafte Angebote – direkt von Monotours24.</p>
+        <div class="cta-row" style="margin-top:16px">
+          <a class="btn" href="#kontakt">Jetzt Kontakt aufnehmen</a>
+          <button class="btn ghost" id="scrollMore" type="button">Mehr erfahren</button>
+        </div>
+        <div id="countdown" class="glass" style="margin-top:16px; display:inline-flex; gap:18px; padding:10px 14px; align-items:center">
+          <strong>Countdown:</strong>
+          <span><span id="d">00</span> Tage</span>
+          <span><span id="h">00</span> Std</span>
+          <span><span id="m">00</span> Min</span>
+          <span><span id="s">00</span> Sek</span>
+        </div>
+      </div>
+
+      <div class="card tilt" id="kontakt">
+        <h3 style="margin:0 0 6px; font-weight:700">Kontaktformular</h3>
+        <p class="notice">Schreiben Sie uns – wir melden uns schnellstmöglich.</p>
+        <form id="csForm" action="https://formspree.io/f/XXXXX" method="POST">
+          <!-- Hinweis: Ersetzen Sie XXXXX durch Ihre Formspree‑Form-ID oder konfigurieren Sie unten EmailJS. -->
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Ihr Name" required>
+          </div>
+          <div class="field">
+            <label for="email">E‑Mail</label>
+            <input id="email" name="email" type="email" placeholder="Ihre E‑Mail" required>
+          </div>
+          <div class="field">
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" placeholder="Wie können wir helfen?" required></textarea>
+          </div>
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="cta-row">
+            <button class="btn" type="submit">Nachricht senden</button>
+            <a class="btn ghost" href="mailto:Monotours24@gmail.com?subject=Anfrage%20über%20Monotours24">oder per E‑Mail</a>
+          </div>
+          <div class="success" id="ok">Danke! Ihre Nachricht wurde gesendet. ✨</div>
+          <div class="error" id="fail">Ups! Etwas ist schiefgelaufen. Bitte schreiben Sie an <a href="mailto:Monotours24@gmail.com">Monotours24@gmail.com</a>.</div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Palms (SVG) -->
+  <div class="palms" aria-hidden="true">
+    <svg class="left" width="140" viewBox="0 0 120 200">
+      <path d="M70 200c-10-40 10-75 8-120" stroke="#0b3d2a" stroke-width="6" fill="none"/>
+      <path d="M45 70c25-15 50-10 70 0-25 5-45 20-70 0z" fill="#0f6f4d"/>
+      <path d="M35 60c20-25 55-30 70-20-28 10-45 30-70 20z" fill="#138f62"/>
+      <path d="M40 75c15 5 35 25 55 30-25 5-50-5-55-30z" fill="#0f6f4d"/>
+    </svg>
+    <svg class="right" width="160" viewBox="0 0 120 200">
+      <path d="M70 200c-10-40 10-75 8-120" stroke="#0b3d2a" stroke-width="6" fill="none"/>
+      <path d="M45 70c25-15 50-10 70 0-25 5-45 20-70 0z" fill="#0f6f4d"/>
+      <path d="M35 60c20-25 55-30 70-20-28 10-45 30-70 20z" fill="#138f62"/>
+      <path d="M40 75c15 5 35 25 55 30-25 5-50-5-55-30z" fill="#0f6f4d"/>
+    </svg>
+  </div>
+
+  <!-- Ocean waves & sand -->
+  <div class="beach" aria-hidden="true">
+    <div class="wave one">
+      <svg preserveAspectRatio="none" viewBox="0 0 1200 120">
+        <path d="M0,0 C150,60 350,0 600,40 C850,80 1050,20 1200,60 L1200,120 L0,120 Z" fill="rgba(255,255,255,.55)"></path>
+      </svg>
+    </div>
+    <div class="wave two">
+      <svg preserveAspectRatio="none" viewBox="0 0 1200 120">
+        <path d="M0,0 C200,80 400,20 600,50 C800,80 1050,30 1200,70 L1200,120 L0,120 Z" fill="rgba(255,255,255,.35)"></path>
+      </svg>
+    </div>
+    <div class="sand"></div>
+  </div>
+
+  <footer>© <span id="year"></span> Monotours24 • Reisebüro • Schwedt/Oder</footer>
+
+  <script>
+    // ====== 3D Tilt (vanilla) ======
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      const strength = 10;
+      const enter = e => el.style.transition = 'transform .12s ease-out';
+      const leave = e => { el.style.transform = 'perspective(600px) rotateX(0) rotateY(0)'; el.style.transition = 'transform .35s ease'; };
+      const move = e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - .5;
+        const py = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(600px) rotateX(${(-py*strength).toFixed(2)}deg) rotateY(${(px*strength).toFixed(2)}deg)`;
+      };
+      el.addEventListener('mouseenter', enter);
+      el.addEventListener('mousemove', move);
+      el.addEventListener('mouseleave', leave);
+      // Touch fallback
+      el.addEventListener('touchmove', (e)=>{
+        const t = e.touches[0];
+        if(!t) return; const r = el.getBoundingClientRect();
+        const px = (t.clientX - r.left) / r.width - .5; const py = (t.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(600px) rotateX(${(-py*strength).toFixed(2)}deg) rotateY(${(px*strength).toFixed(2)}deg)`;
+      }, {passive:true});
+      el.addEventListener('touchend', ()=> el.style.transform='perspective(600px) rotateX(0) rotateY(0)');
+    });
+
+    // ====== Airplane fly-by ======
+    const plane = document.querySelector('.plane');
+    function animatePlane(){
+      plane.animate([
+        { transform: 'translateX(-10vw) translateY(0) rotate(-2deg)' },
+        { transform: 'translateX(60vw) translateY(-3vh) rotate(0deg)' },
+        { transform: 'translateX(110vw) translateY(0) rotate(3deg)' }
+      ], { duration: 16000, iterations: Infinity, easing: 'ease-in-out'});
+    }
+    animatePlane();
+
+    // ====== Particles (canvas) ======
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let W, H, P=[];
+    function resize(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+    function spawn(){
+      const n = Math.min(80, Math.floor((W*H)/40000));
+      P = Array.from({length:n}, ()=>({
+        x: Math.random()*W,
+        y: Math.random()*H*0.7,
+        r: Math.random()*2 + .5,
+        a: Math.random()*Math.PI*2,
+        v: Math.random()*0.4 + 0.2
+      }));
+    }
+    spawn();
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      ctx.globalAlpha = 0.9;
+      P.forEach(p=>{
+        p.a += 0.01; p.y += Math.sin(p.a)*0.25; p.x += p.v; if(p.x>W+10) p.x=-10;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fill();
+      });
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // ====== Smooth scroll ======
+    document.getElementById('scrollMore').addEventListener('click', ()=>{
+      document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});
+    });
+
+    // ====== Countdown (edit launchDate to your target) ======
+    const launchDate = new Date('2025-10-15T10:00:00+02:00');
+    function updateCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, launchDate - now);
+      const s = Math.floor(diff/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      const sec = s%60;
+      const pad = n => n.toString().padStart(2,'0');
+      document.getElementById('d').textContent = pad(d);
+      document.getElementById('h').textContent = pad(h);
+      document.getElementById('m').textContent = pad(m);
+      document.getElementById('s').textContent = pad(sec);
+    }
+    setInterval(updateCountdown,1000); updateCountdown();
+
+    // ====== Footer year ======
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ====== Lightweight Form handler (Formspree-friendly) ======
+    const form = document.getElementById('csForm');
+    const ok = document.getElementById('ok');
+    const fail = document.getElementById('fail');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      try{
+        const r = await fetch(form.action, { method:'POST', body:data, headers: { 'Accept':'application/json' } });
+        if(r.ok){ ok.style.display='block'; fail.style.display='none'; form.reset(); }
+        else { throw new Error('bad'); }
+      }catch(err){ ok.style.display='none'; fail.style.display='block'; }
+    });
+  </script>
 </body>
 </html>
