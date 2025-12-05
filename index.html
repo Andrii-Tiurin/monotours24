@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monotours24 – Bald verfügbar</title>
-  <meta name="description" content="Monotours24 – Reisebüro. Unsere Website befindet sich im Aufbau. Kontaktieren Sie uns per Formular oder E‑Mail." />
+  <meta name="description" content="Monotours24 – Reisebüro. Unsere Website befindet sich im Aufbau. Kontaktieren Sie uns per Formular oder E-Mail." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@
 
     <section class="hero">
       <div>
-        <span class="badge">🌴 Malediven‑Vibes • Türkises Meer • Palmen</span>
+        <span class="badge">🌴 Malediven-Vibes • Türkises Meer • Palmen</span>
         <h1>Unsere Website befindet sich gerade im Aufbau<span style="display:block; font-size:.55em; font-weight:400">Wir starten bald</span></h1>
         <p class="subtitle">Freuen Sie sich auf exklusive Reisen, persönliche Beratung und traumhafte Angebote – direkt von Monotours24.</p>
         <div class="cta-row" style="margin-top:16px">
@@ -163,14 +163,14 @@
         <h3 style="margin:0 0 6px; font-weight:700">Kontaktformular</h3>
         <p class="notice">Schreiben Sie uns – wir melden uns schnellstmöglich.</p>
         <form id="csForm" action="https://formspree.io/f/XXXXX" method="POST">
-          <!-- Hinweis: Ersetzen Sie XXXXX durch Ihre Formspree‑Form-ID oder konfigurieren Sie unten EmailJS. -->
+          <!-- Hinweis: Ersetzen Sie XXXXX durch Ihre Formspree-Form-ID oder konfigurieren Sie unten EmailJS. -->
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Ihr Name" required>
           </div>
           <div class="field">
-            <label for="email">E‑Mail</label>
-            <input id="email" name="email" type="email" placeholder="Ihre E‑Mail" required>
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" placeholder="Ihre E-Mail" required>
           </div>
           <div class="field">
             <label for="message">Nachricht</label>
@@ -179,9 +179,16 @@
           <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
+          <!-- DSGVO Hinweis -->
+          <div class="notice">
+            Mit dem Absenden des Formulars bestätigen Sie, dass Sie die
+            <a href="/datenschutz.html" style="color:#06202b; text-decoration:underline;">Datenschutzerklärung</a>
+            gelesen haben und mit der Verarbeitung Ihrer Daten einverstanden sind.
+          </div>
+
           <div class="cta-row">
             <button class="btn" type="submit">Nachricht senden</button>
-            <a class="btn ghost" href="mailto:Monotours24@gmail.com?subject=Anfrage%20über%20Monotours24">oder per E‑Mail</a>
+            <a class="btn ghost" href="mailto:Monotours24@gmail.com?subject=Anfrage%20über%20Monotours24">oder per E-Mail</a>
           </div>
           <div class="success" id="ok">Danke! Ihre Nachricht wurde gesendet. ✨</div>
           <div class="error" id="fail">Ups! Etwas ist schiefgelaufen. Bitte schreiben Sie an <a href="mailto:Monotours24@gmail.com">Monotours24@gmail.com</a>.</div>
@@ -221,7 +228,11 @@
     <div class="sand"></div>
   </div>
 
-  <footer>© <span id="year"></span> Monotours24 • Reisebüro • Schwedt/Oder</footer>
+  <footer>
+    © <span id="year"></span> Monotours24 • Reisebüro • Schwedt/Oder
+    • <a href="/impressum.html" style="color:#06202b;">Impressum</a>
+    • <a href="/datenschutz.html" style="color:#06202b;">Datenschutzerklärung</a>
+  </footer>
 
   <script>
     // ====== 3D Tilt (vanilla) ======
